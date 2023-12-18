@@ -6,14 +6,12 @@ import (
 	"time"
 )
 
-// Listing 4.12
 type ReadWriteMutex struct {
 	readersCounter int
 	readersLock    sync.Mutex
 	globalLock     sync.Mutex
 }
 
-// Listing 4.13
 func (rw *ReadWriteMutex) ReadLock() {
 	rw.readersLock.Lock()
 	rw.readersCounter++
@@ -27,7 +25,6 @@ func (rw *ReadWriteMutex) WriteLock() {
 	rw.globalLock.Lock()
 }
 
-// Listing 4.14
 func (rw *ReadWriteMutex) ReadUnlock() {
 	rw.readersLock.Lock()
 	rw.readersCounter--
